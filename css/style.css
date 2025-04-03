@@ -263,11 +263,184 @@ body {
     background-color: #fff !important;
 }
 
+/* Find Ride Results Styles */
+.results-container {
+    margin-top: 2rem;
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.view-toggle-btn {
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+}
+
+.ride-card {
+    border: none;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.ride-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.driver-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.driver-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--bs-primary);
+}
+
+.rating-stars {
+    color: #ffc107;
+}
+
+.route-preview {
+    background: var(--bs-light);
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+    cursor: pointer;
+}
+
+.route-details {
+    display: none;
+}
+
+.route-details.expanded {
+    display: block;
+}
+
+.contact-options {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.contact-btn {
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+}
+
+.map-view {
+    height: 500px;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    display: none;
+}
+
+.map-view.active {
+    display: block;
+}
+
+/* Filter Sidebar */
+.filters-sidebar {
+    position: fixed;
+    right: -300px;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background: var(--bs-light);
+    padding: 2rem;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1040;
+}
+
+.filters-sidebar.active {
+    right: 0;
+}
+
 /* Dark mode adjustments */
+[data-bs-theme="dark"] .route-preview {
+    background: var(--bs-dark);
+}
+
+[data-bs-theme="dark"] .filters-sidebar {
+    background: var(--bs-dark);
+}
+
 [data-bs-theme="dark"] .search-card {
     background: var(--bs-dark);
 }
 
 [data-bs-theme="dark"] .location-input {
     background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+
+/* Ride Details Styles */
+.ride-details-section {
+    padding-top: 2rem;
+}
+
+.driver-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--bs-primary);
+}
+
+.stat-card {
+    background: var(--bs-light);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.route-map {
+    height: 300px;
+    border-radius: 10px;
+    background: var(--bs-light);
+}
+
+.stat-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bs-light);
+    border-radius: 10px;
+}
+
+.stat-box i {
+    font-size: 1.5rem;
+    color: var(--bs-primary);
+}
+
+.reviewer-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.review-item {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--bs-border-color);
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+/* Dark mode adjustments */
+[data-bs-theme="dark"] .stat-card,
+[data-bs-theme="dark"] .stat-box {
+    background: var(--bs-dark);
 }

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ride Details - CampusRide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body data-bs-theme="light">
+    <!-- Update the navbar brand section -->
+    <!-- Update navbar logo to match index.html -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="https://cdn.pixabay.com/photo/2017/01/08/07/49/travel-1962320_1280.png" alt="CampusRide Logo" height="40" class="me-2">
+                <span>CampusRide</span>
+            </a>
+        </div>
+    </nav>
+
+    <section class="ride-details-section py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Driver Profile Column -->
+                <div class="col-lg-4 mb-4">
+                    <div class="card driver-profile-card">
+                        <div class="card-body text-center">
+                            <img src="images/default-avatar.png" alt="Driver" class="driver-photo mb-3">
+                            <h4 class="driver-name">John Doe</h4>
+                            <div class="rating mb-3">
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                <i class="bi bi-star-half text-warning"></i>
+                                <span class="ms-2">4.5</span>
+                            </div>
+                            <div class="driver-stats mb-3">
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <div class="stat-card">
+                                            <h5>120</h5>
+                                            <small>Rides</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="stat-card">
+                                            <h5>2 Years</h5>
+                                            <small>Experience</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="contact-methods">
+                                <button class="btn btn-outline-primary btn-sm me-2" data-bs-toggle="tooltip" title="Chat">
+                                    <i class="bi bi-chat-dots-fill"></i> Chat
+                                </button>
+                                <button class="btn btn-outline-primary btn-sm me-2" data-bs-toggle="tooltip" title="Call">
+                                    <i class="bi bi-telephone-fill"></i> Call
+                                </button>
+                                <button class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" title="WhatsApp">
+                                    <i class="bi bi-whatsapp"></i> WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ride Details Column -->
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Ride Details</h4>
+                            
+                            <!-- Route Map -->
+                            <div id="routeMap" class="route-map mb-4"></div>
+
+                            <!-- Route Info -->
+                            <div class="route-info mb-4">
+                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                    <div>
+                                        <div class="mb-2">
+                                            <i class="bi bi-geo-alt-fill text-success"></i>
+                                            <strong>From:</strong> Campus Center
+                                        </div>
+                                        <div>
+                                            <i class="bi bi-geo-alt-fill text-danger"></i>
+                                            <strong>To:</strong> City Mall
+                                        </div>
+                                    </div>
+                                    <div class="text-end">
+                                        <div class="mb-2">
+                                            <strong>Departure:</strong> 09:00 AM
+                                        </div>
+                                        <div>
+                                            <strong>Arrival:</strong> 09:45 AM
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Vehicle Info -->
+                                <div class="vehicle-info mb-3">
+                                    <span class="badge bg-primary me-2">
+                                        <i class="bi bi-car-front"></i> Sedan
+                                    </span>
+                                    <span class="text-muted">KA-01-AB-1234</span>
+                                </div>
+
+                                <!-- Ride Stats -->
+                                <div class="ride-stats row g-3 mb-4">
+                                    <div class="col-6 col-md-3">
+                                        <div class="stat-box">
+                                            <i class="bi bi-clock"></i>
+                                            <div>
+                                                <small>Duration</small>
+                                                <h6>45 mins</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <div class="stat-box">
+                                            <i class="bi bi-people"></i>
+                                            <div>
+                                                <small>Available</small>
+                                                <h6>2 Seats</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <div class="stat-box">
+                                            <i class="bi bi-speedometer2"></i>
+                                            <div>
+                                                <small>Distance</small>
+                                                <h6>12 km</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Booking Section -->
+                                <div class="booking-section text-center">
+                                    <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#bookingModal">
+                                        Book This Ride
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reviews Section -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Rider Reviews</h4>
+                            <div class="reviews-list">
+                                <!-- Sample Review -->
+                                <div class="review-item mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <img src="images/default-avatar.png" alt="Reviewer" class="reviewer-photo me-2">
+                                        <div>
+                                            <h6 class="mb-0">Sarah Johnson</h6>
+                                            <div class="rating">
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star-fill text-warning"></i>
+                                                <i class="bi bi-star text-warning"></i>
+                                            </div>
+                                        </div>
+                                        <small class="text-muted ms-auto">2 days ago</small>
+                                    </div>
+                                    <p class="review-text mb-0">
+                                        Great ride! Driver was punctual and very professional. Would definitely recommend.
+                                    </p>
+                                </div>
+                                <!-- Add more reviews as needed -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Confirmation Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm Booking</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="booking-summary">
+                        <h6>Ride Summary</h6>
+                        <ul class="list-unstyled">
+                            <li><strong>From:</strong> Campus Center</li>
+                            <li><strong>To:</strong> City Mall</li>
+                            <li><strong>Date:</strong> Today</li>
+                            <li><strong>Time:</strong> 09:00 AM</li>
+                            <li><strong>Seats:</strong> 2</li>
+                        </ul>
+                        <hr>
+                        <div class="text-center">
+                            <p class="mb-3">By booking this ride, you agree to our terms and conditions.</p>
+                            <button class="btn btn-primary">Confirm Booking</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update the footer brand section -->
+    <!-- Update footer logo -->
+    <div class="footer-brand-section">
+        <img src="https://cdn.pixabay.com/photo/2017/01/08/07/49/travel-1962320_1280.png" alt="CampusRide" class="footer-logo">
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_API_KEY&libraries=places"></script>
+    <script src="js/ride-details.js"></script>
+</body>
+</html>

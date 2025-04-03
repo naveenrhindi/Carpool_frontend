@@ -112,3 +112,48 @@ function initMap() {
 
 // Initialize map when page loads
 window.initMap = initMap;
+
+// Add these functions to your existing find-ride.js
+
+function toggleRouteDetails(element) {
+    const details = element.nextElementSibling;
+    details.classList.toggle('expanded');
+    
+    if (details.classList.contains('expanded')) {
+        // Initialize route map when expanded
+        const routeMap = new google.maps.Map(details.querySelector('#routeMap'), {
+            center: defaultLocation,
+            zoom: 13
+        });
+        // Add route visualization here
+    }
+}
+
+function toggleFilters() {
+    document.getElementById('filtersSidebar').classList.toggle('active');
+}
+
+document.getElementById('viewToggle').addEventListener('click', function() {
+    const mapView = document.getElementById('mapView');
+    const listView = document.querySelector('.results-container');
+    
+    mapView.classList.toggle('active');
+    this.innerHTML = mapView.classList.contains('active') ? 
+        '<i class="bi bi-list"></i> List View' : 
+        '<i class="bi bi-map"></i> Map View';
+        
+    if (mapView.classList.contains('active')) {
+        // Initialize map view with all rides
+        const resultsMap = new google.maps.Map(mapView, {
+            center: defaultLocation,
+            zoom: 12
+        });
+        // Add markers for each ride
+    }
+});
+
+// Initialize tooltips
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-tooltip]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+});
