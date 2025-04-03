@@ -222,3 +222,52 @@ body {
 [data-bs-theme="dark"] #how-it-works {
     background: linear-gradient(135deg, #212529 0%, #343a40 100%);
 }
+
+
+/* Find Ride Styles */
+.find-ride-section {
+    padding-top: 6rem;
+    background: linear-gradient(135deg, var(--bs-light) 0%, #fff 100%);
+}
+
+.search-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.search-card:hover {
+    transform: translateY(-5px);
+}
+
+.search-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(var(--bs-primary-rgb), 0.3);
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(var(--bs-primary-rgb), 0.4);
+}
+
+.common-destinations button {
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.location-input {
+    background-color: #fff !important;
+}
+
+/* Dark mode adjustments */
+[data-bs-theme="dark"] .search-card {
+    background: var(--bs-dark);
+}
+
+[data-bs-theme="dark"] .location-input {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}

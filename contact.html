@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - CampusRide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body data-bs-theme="light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="https://cdn.pixabay.com/photo/2017/01/08/07/49/travel-1962320_1280.png" alt="CampusRide Logo" height="40" class="me-2">
+                <span>CampusRide</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Offer a Ride</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Find a Ride</a></li>
+                    <li class="nav-item"><a class="nav-link" href="history.html">Ride History</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                </ul>
+
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-link" id="themeToggle">
+                        <i class="bi bi-moon-stars"></i>
+                    </button>
+                    <div class="guest-view">
+                        <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h1 class="display-4 fw-bold mb-4">Let's Connect</h1>
+                    <p class="lead mb-4">Your journey matters to us. Reach out and let us enhance your campus commuting experience.</p>
+                    <div class="contact-cards row g-3 mb-4">
+                        <div class="col-md-6">
+                            <div class="contact-card tilt-card">
+                                <i class="bi bi-headset pulse-iconf"></i>
+                                <h5>Always Here for You</h5>
+                                <p>Round-the-clock assistance for seamless rides</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="contact-card tilt-card">
+                                <i class="bi bi-shield-check pulse-icon"></i>
+                                <h5>Trust & Security</h5>
+                                <p>Your peace of mind is our commitment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="contact-form-wrapper">
+                        <form id="contactForm" class="contact-form">
+                            <div class="mb-3">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Campus Email</label>
+                                <input type="email" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Subject</label>
+                                <select class="form-select">
+                                    <option>General Inquiry</option>
+                                    <option>Technical Support</option>
+                                    <option>Safety Concern</option>
+                                    <option>Partnership</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Contact Us Section -->
+    <section class="why-contact-us py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">Why Reach Out?</h2>
+                <div class="title-underline mx-auto"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="reason-card tilt-card">
+                        <i class="bi bi-life-preserver floating-icon"></i>
+                        <h4>Expert Assistance</h4>
+                        <p>Get personalized solutions from our campus mobility specialists</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="reason-card tilt-card">
+                        <i class="bi bi-lightning-charge floating-icon"></i>
+                        <h4>Swift Response</h4>
+                        <p>Experience lightning-fast support tailored to your schedule</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="reason-card tilt-card">
+                        <i class="bi bi-people floating-icon"></i>
+                        <h4>Community Voice</h4>
+                        <p>Shape the future of campus transportation with your insights</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+   
+
+    <!-- Footer -->
+    <footer class="custom-footer">
+        <div class="footer-content">
+            <div class="footer-main">
+                <!-- Brand Section -->
+                <div class="footer-brand-section">
+                    <img src="https://cdn.pixabay.com/photo/2017/01/08/07/49/travel-1962320_1280.png" alt="CampusRide" class="footer-logo">
+                    <h3>CampusRide</h3>
+                    <p>Making campus commuting smarter, safer, and more sustainable for everyone.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-links-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="safety.html">Safety</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-links-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Offer Ride</a></li>
+                        <li><a href="#">Find Ride</a></li>
+                        <li><a href="#">Schedule Ride</a></li>
+                        <li><a href="#">Campus Routes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe for updates and offers</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit"><i class="bi bi-send-fill"></i></button>
+                    </div>
+                    <div class="app-stores">
+                        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store"></a>
+                        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 CampusRide. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+</body>
+</html>
