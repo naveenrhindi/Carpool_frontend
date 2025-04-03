@@ -444,3 +444,16 @@ body {
 [data-bs-theme="dark"] .stat-box {
     background: var(--bs-dark);
 }
+
+.submit-ride-btn {
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(var(--bs-primary-rgb), 0.3);
+    transition: all 0.3s ease;
+}
+
+.submit-ride-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(var(--bs-primary-rgb), 0.4);
+}

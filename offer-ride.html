@@ -212,6 +212,13 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- Add Submit Button -->
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg submit-ride-btn">
+                                <i class="bi bi-check-circle me-2"></i>Offer Ride
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -237,7 +244,7 @@
         </div>
     </div>
 
-    <!-- Confirmation Modal -->
+    <!-- Update Confirmation Modal -->
     <div class="modal fade" id="confirmationModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -246,7 +253,30 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- Dynamically populated -->
+                    <div class="ride-summary">
+                        <!-- Vehicle Details -->
+                        <div class="mb-3">
+                            <h6><i class="bi bi-car-front me-2"></i>Vehicle Details</h6>
+                            <p class="mb-1">Type: <span id="summaryVehicleType"></span></p>
+                            <p class="mb-1">Number: <span id="summaryVehicleNumber"></span></p>
+                            <p>Seats: <span id="summarySeats"></span></p>
+                        </div>
+                        <!-- Route Details -->
+                        <div class="mb-3">
+                            <h6><i class="bi bi-geo-alt me-2"></i>Route Details</h6>
+                            <p class="mb-1">From: <span id="summaryFrom"></span></p>
+                            <p class="mb-1">To: <span id="summaryTo"></span></p>
+                            <p class="mb-1">Departure: <span id="summaryDeparture"></span></p>
+                            <p>Arrival: <span id="summaryArrival"></span></p>
+                        </div>
+                        <!-- Preferences -->
+                        <div>
+                            <h6><i class="bi bi-gear me-2"></i>Preferences</h6>
+                            <div id="summaryPreferences" class="d-flex flex-wrap gap-2">
+                                <!-- Dynamically populated preferences -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Edit</button>
@@ -255,6 +285,7 @@
             </div>
         </div>
     </div>
+    
     <footer class="custom-footer">
         <div class="footer-content">
             <div class="footer-main">
@@ -328,3 +359,4 @@
     <script src="js/offer-ride.js"></script>
 </body>
 </html>
+

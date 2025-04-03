@@ -73,9 +73,28 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('offerRideForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
+        // Populate summary in modal
+        document.getElementById('summaryVehicleType').textContent = document.getElementById('vehicleType').value;
+        document.getElementById('summaryVehicleNumber').textContent = document.getElementById('vehicleNumber').value;
+        document.getElementById('summarySeats').textContent = document.getElementById('seatsAvailable').value;
+        document.getElementById('summaryFrom').textContent = document.getElementById('currentLocation').value;
+        document.getElementById('summaryTo').textContent = document.getElementById('destination').value;
+        document.getElementById('summaryDeparture').textContent = document.getElementById('departureDateTime').value;
+        document.getElementById('summaryArrival').textContent = document.getElementById('arrivalDateTime').value;
+    
         // Show confirmation modal
-        const modal = new bootstrap.Modal(document.getElementById('confirmationModal'));
-        modal.show();
+        new bootstrap.Modal(document.getElementById('confirmationModal')).show();
+    });
+
+    // Handle final confirmation
+    document.getElementById('confirmRide').addEventListener('click', function() {
+        // Add your API call or data submission logic here
+        
+        // Close modal
+        bootstrap.Modal.getInstance(document.getElementById('confirmationModal')).hide();
+        
+        // Show success message
+        alert('Ride offered successfully!');
     });
 
     // Initialize map
