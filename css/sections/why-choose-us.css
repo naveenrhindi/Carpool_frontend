@@ -1,0 +1,118 @@
+/* Why Choose Us Section */
+.benefit-card {
+    padding: 2rem;
+    border-radius: 1rem;
+    background: var(--bs-white);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.benefit-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.benefit-icon i {
+    font-size: 2.5rem;
+}
+
+.benefit-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--bs-dark);
+}
+
+.benefit-card p {
+    color: var(--bs-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.benefit-stats {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--bs-gray-200);
+}
+
+.benefit-stats .h2 {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    background: linear-gradient(45deg, var(--bs-primary), var(--bs-info));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Dark Mode Adjustments */
+[data-bs-theme="dark"] .benefit-card {
+    background: var(--bs-dark);
+}
+
+[data-bs-theme="dark"] .benefit-card h3 {
+    color: var(--bs-light);
+}
+
+[data-bs-theme="dark"] .benefit-stats {
+    border-color: var(--bs-gray-700);
+}
+
+#why-choose-us {
+    background-color: var(--bs-light);
+}
+
+.why-choose-image {
+    position: relative;
+    padding: 1rem;
+}
+
+.feature-item {
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateX(10px);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bs-light);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.feature-item p {
+    color: var(--bs-secondary);
+}
+
+/* Dark Mode Adjustments */
+[data-bs-theme="dark"] #why-choose-us {
+    background-color: var(--bs-dark);
+}
+
+[data-bs-theme="dark"] .feature-icon {
+    background-color: var(--bs-dark);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    .why-choose-image {
+        margin-top: 3rem;
+    }
+}

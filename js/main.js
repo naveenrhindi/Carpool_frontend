@@ -78,3 +78,9 @@ AOS.init({
     duration: 800,
     once: true
 });
+
+// Initialize testimonial carousel with custom interval
+const testimonialCarousel = new bootstrap.Carousel(document.getElementById('testimonialCarousel'), {
+    interval: 5000, // Change slides every 5 seconds
+    touch: true    // Enable touch swiping on mobile
+});

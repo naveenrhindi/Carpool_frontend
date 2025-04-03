@@ -1,3 +1,16 @@
+
+/* Import section styles */
+@import 'sections/navbar.css';
+@import 'sections/hero.css';
+@import 'sections/how-it-works.css';
+@import 'sections/features.css';
+@import 'sections/why-choose-us.css';
+@import 'sections/testimonials.css';
+@import 'sections/footer.css';
+
+
+
+
 :root {
     --primary-color: #4CAF50;
     --secondary-color: #2196F3;
@@ -27,11 +40,6 @@ body {
     to { opacity: 1; }
 }
 
-/* Import section styles */
-@import 'sections/navbar.css';
-@import 'sections/hero.css';
-@import 'sections/how-it-works.css';
-@import 'sections/features.css';
 
 /* Video Background Styles */
 .hero-section {
