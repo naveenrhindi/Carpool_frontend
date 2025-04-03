@@ -1,0 +1,170 @@
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 900px;
+    height: 750px; /* Changed from min-height to fixed height */
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.auth-image {
+    position: relative;
+    height: 750px; /* Changed from min-height to match auth-card */
+    background-size: cover;
+    background-position: center;
+    animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+}
+
+.auth-form-container {
+    padding: 3rem 2rem;
+    height: 100%;
+    animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+}
+
+.auth-image {
+    position: relative;
+    min-height: 600px;
+    background-size: cover;
+    background-position: center;
+    animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+}
+
+.auth-quote {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    right: 2rem;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Form element animations */
+.form-control, .btn, .input-group {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-control:focus {
+    transform: translateY(-2px);
+}
+
+.input-group:focus-within {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth form appearance */
+.form-label {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.form-control {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger form elements animation */
+.form-label:nth-child(1) { animation-delay: 0.3s; }
+.form-label:nth-child(2) { animation-delay: 0.4s; }
+.form-label:nth-child(3) { animation-delay: 0.5s; }
+.form-label:nth-child(4) { animation-delay: 0.6s; }
+
+.form-control:nth-child(1) { animation-delay: 0.4s; }
+.form-control:nth-child(2) { animation-delay: 0.5s; }
+.form-control:nth-child(3) { animation-delay: 0.6s; }
+.form-control:nth-child(4) { animation-delay: 0.7s; }
+.auth-logo {
+    height: 60px;
+    margin-bottom: 1rem;
+}
+
+.input-group-text {
+    background: transparent;
+}
+
+.social-auth .btn {
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.social-auth .btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Dark mode support */
+[data-bs-theme="dark"] .auth-card {
+    background: #212529;
+}
+
+[data-bs-theme="dark"] .auth-container {
+    background: linear-gradient(135deg, #212529 0%, #343a40 100%);
+}
