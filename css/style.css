@@ -1,0 +1,216 @@
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #2196F3;
+}
+
+body {
+    padding-top: 76px;
+}
+
+/* Dark Mode Styles */
+[data-bs-theme="dark"] {
+    --bs-body-bg: #212529;
+    --bs-body-color: #f8f9fa;
+}
+
+[data-bs-theme="dark"] .navbar {
+    background-color: #343a40 !important;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Import section styles */
+@import 'sections/navbar.css';
+@import 'sections/hero.css';
+@import 'sections/how-it-works.css';
+@import 'sections/features.css';
+
+/* Video Background Styles */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-background .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Hero Content Styles */
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content .lead {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.cta-buttons .btn {
+    padding: 0.8rem 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.cta-buttons .btn:hover {
+    transform: translateY(-2px);
+}
+
+.secondary-cta {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1rem;
+    margin-top: 2rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-content {
+        text-align: center;
+        padding: 2rem 0;
+    }
+
+    .cta-buttons .btn {
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+}
+
+/* Navbar Styles */
+.navbar-brand img {
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.05);
+}
+
+/* User Profile Styles */
+.user-view .dropdown-toggle::after {
+    display: none;
+}
+
+.user-view .dropdown-toggle {
+    text-decoration: none;
+    color: var(--bs-body-color);
+}
+
+.user-view .dropdown-menu {
+    min-width: 200px;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 991px) {
+    .navbar-nav {
+        margin-bottom: 1rem;
+    }
+    
+    .d-flex.align-items-center {
+        margin-top: 1rem;
+    }
+}
+
+/* How It Works Section */
+#how-it-works {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.title-underline {
+    width: 80px;
+    height: 4px;
+    background: var(--bs-primary);
+    margin-top: 1rem;
+}
+
+.step-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+}
+
+.step-icon {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.step-icon i {
+    font-size: 2.5rem;
+    color: var(--bs-primary);
+}
+
+.step-number {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--bs-primary);
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--bs-dark);
+}
+
+.step-description {
+    color: var(--bs-secondary);
+    margin-bottom: 0;
+}
+
+/* Dark Mode Adjustments */
+[data-bs-theme="dark"] .step-card {
+    background: var(--bs-dark);
+}
+
+[data-bs-theme="dark"] .step-title {
+    color: var(--bs-light);
+}
+
+[data-bs-theme="dark"] #how-it-works {
+    background: linear-gradient(135deg, #212529 0%, #343a40 100%);
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Ride-Share</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body data-bs-theme="light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <!-- Updated Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="images/logo.png" alt="CampusRide Logo" height="40" class="me-2">
+                <span>CampusRide</span>
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Updated Navigation -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Offer a Ride</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Find a Ride</a></li>
+                    <li class="nav-item"><a class="nav-link" href="history.html">Ride History</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+
+                <div class="d-flex align-items-center">
+                    <!-- Dark Mode Toggle -->
+                    <button class="btn btn-link" id="themeToggle">
+                        <i class="bi bi-moon-stars"></i>
+                    </button>
+
+                    <!-- Guest View (Not Logged In) -->
+                    <div class="guest-view">
+                        <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+                    </div>
+
+                    <!-- User Profile Dropdown (Logged In - Initially Hidden) -->
+                    <div class="user-view d-none">
+                        <div class="dropdown">
+                            <button class="btn btn-link dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                                <img src="images/default-avatar.png" alt="Profile" class="rounded-circle me-2" width="32" height="32">
+                                <span class="user-name">John Doe</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person me-2"></i>Profile Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <!-- Video Background -->
+        <div class="video-background">
+            <video autoplay muted loop playsinline>
+                <source src="videos/campus-life.mp4" type="video/mp4">
+            </video>
+            <div class="overlay"></div>
+        </div>
+
+        <div class="container position-relative">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-md-7">
+                    <div class="hero-content text-white">
+                        <h1 class="display-4 fw-bold mb-4 animate__animated animate__fadeInUp">
+                            Seamless Campus Carpooling – Share Rides, Save Costs!
+                        </h1>
+                        <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s">
+                            Connect with fellow students & staff for hassle-free rides around campus.
+                        </p>
+                        <div class="cta-buttons animate__animated animate__fadeInUp animate__delay-2s">
+                            <button class="btn btn-primary btn-lg me-3" data-bs-toggle="modal" data-bs-target="#offerRideModal">
+                                <i class="bi bi-car-front me-2"></i>Offer a Ride
+                            </button>
+                            <button class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#findRideModal">
+                                <i class="bi bi-search me-2"></i>Find a Ride
+                            </button>
+                        </div>
+                        <div class="mt-4 secondary-cta animate__animated animate__fadeInUp animate__delay-3s">
+                            <p class="mb-2">Join now and make your commute smarter!</p>
+                            <button class="btn btn-link text-white text-decoration-none" data-bs-toggle="modal" data-bs-target="#registerModal">
+                                Sign up now <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">How It Works – Easy & Hassle-Free!</h2>
+                <div class="title-underline mx-auto"></div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Step 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="step-card h-100" data-aos="fade-up">
+                        <div class="step-icon">
+                            <i class="bi bi-person-check-fill"></i>
+                            <span class="step-number">1</span>
+                        </div>
+                        <h3 class="step-title">Sign Up & Verify</h3>
+                        <p class="step-description">Register with your campus email and get verified instantly.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="step-card h-100" data-aos="fade-up" data-aos-delay="100">
+                        <div class="step-icon">
+                            <i class="bi bi-car-front-fill"></i>
+                            <span class="step-number">2</span>
+                        </div>
+                        <h3 class="step-title">Offer or Find a Ride</h3>
+                        <p class="step-description">Post your ride details or browse available carpool options.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="step-card h-100" data-aos="fade-up" data-aos-delay="200">
+                        <div class="step-icon">
+                            <i class="bi bi-chat-dots-fill"></i>
+                            <span class="step-number">3</span>
+                        </div>
+                        <h3 class="step-title">Connect & Confirm</h3>
+                        <p class="step-description">Chat with riders/drivers, finalize details, and confirm the ride.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="step-card h-100" data-aos="fade-up" data-aos-delay="300">
+                        <div class="step-icon">
+                            <i class="bi bi-hand-thumbs-up-fill"></i>
+                            <span class="step-number">4</span>
+                        </div>
+                        <h3 class="step-title">Ride & Save!</h3>
+                        <p class="step-description">Enjoy a cost-effective, eco-friendly commute with fellow students/staff.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label class="form-label">Campus Email</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+        <!-- ... existing scripts ... -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init({
+                duration: 800,
+                once: true
+            });
+        </script>
+    </body>
+</body>
+</html>
