@@ -57,6 +57,60 @@ function updateUIForAuthState(isLoggedIn) {
     }
 }
 
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    function updateNavigation() {
+        const authButtons = document.querySelector('.auth-buttons');
+        const userMenu = document.querySelector('.user-menu');
+        
+        if (AuthService.isAuthenticated()) {
+            const user = AuthService.getUser();
+            if (authButtons) authButtons.style.display = 'none';
+            if (userMenu) {
+                userMenu.style.display = 'block';
+                const userNameElement = userMenu.querySelector('.user-name');
+                if (userNameElement && user) {
+                    userNameElement.textContent = user.name;
+                }
+            }
+            // Show welcome back message
+            Swal.fire({
+                title: `Welcome back, ${user.name}!`,
+                icon: 'success',
+                timer: 2000,
+                showConfirmButton: false,
+                toast: true,
+                position: 'top-end'
+            });
+        } else {
+            if (authButtons) authButtons.style.display = 'block';
+            if (userMenu) userMenu.style.display = 'none';
+        }
+    }
+
+    // Call when page loads
+    updateNavigation();
+
+    // Handle logout
+    const logoutButton = document.querySelector('[onclick="AuthService.logout()"]');
+    if (logoutButton) {
+        logoutButton.onclick = function(e) {
+            e.preventDefault();
+            AuthService.logout();
+            Swal.fire({
+                title: 'Logged out successfully!',
+                icon: 'success',
+                timer: 2000,
+                showConfirmButton: false,
+                toast: true,
+                position: 'top-end'
+            });
+            window.location.href = '/index.html';
+        };
+    }
+});
+
 // Logout Handler
 document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
     e.preventDefault();

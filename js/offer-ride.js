@@ -1,3 +1,6 @@
+// Remove flatpickr initialization for datetime inputs since we're using native datetime-local
+// Instead, set min date for the inputs
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize AOS
     AOS.init({
@@ -5,113 +8,158 @@ document.addEventListener('DOMContentLoaded', function() {
         once: true
     });
 
-    // Initialize Flatpickr for date/time pickers
-    flatpickr("#departureDateTime", {
-        enableTime: true,
-        minDate: "today",
-        dateFormat: "Y-m-d H:i",
-        onChange: function(selectedDates) {
-            // Update arrival time minimum date when departure time changes
-            const arrivalPicker = document.querySelector("#arrivalDateTime")._flatpickr;
-            arrivalPicker.set("minDate", selectedDates[0]);
+    const offerRideForm = document.getElementById('offerRideForm');
+
+    offerRideForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        if (!offerRideForm.checkValidity()) {
+            event.stopPropagation();
+            offerRideForm.classList.add('was-validated');
+            return;
+        }
+
+        // Show loading state
+        const submitBtn = document.querySelector('.submit-ride-btn');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing...';
+
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                throw new Error('Please login to offer a ride');
+            }
+
+            // Structure data exactly as per backend schema
+            const rideData = {
+                vehicleDetails: {
+                    type: document.getElementById('vehicleType').value,
+                    number: document.getElementById('vehicleNumber').value.toUpperCase(),
+                    seatsAvailable: parseInt(document.getElementById('seatsAvailable').value)
+                },
+                route: {
+                    origin: document.getElementById('currentLocation').value,
+                    destination: document.getElementById('destination').value,
+                    departureTime: document.getElementById('departureDateTime').value,  // Send as is
+                    arrivalTime: document.getElementById('arrivalDateTime').value,      // Send as is
+                    preferredRoutes: Array.from(document.getElementById('preferredRoutes').selectedOptions).map(option => option.value)
+                },
+                preferences: {
+                    ac: document.getElementById('ac').checked,
+                    music: document.getElementById('music').checked,
+                    smoking: document.getElementById('smoking').checked
+                },
+                contactPreferences: {
+                    call: document.getElementById('call').checked,
+                    chat: document.getElementById('chat').checked,
+                    whatsapp: document.getElementById('whatsapp').checked
+                },
+                fare: parseFloat(document.getElementById('fare').value) || 0
+            };
+
+           console.log('Request payload:', JSON.stringify(rideData, null, 2));
+
+           const response = await fetch('http://localhost:5000/api/rides/create', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json',
+                   'Authorization': `Bearer ${token}`
+               },
+               body: JSON.stringify(rideData)
+           });
+
+           const data = await response.json();
+           
+           if (!response.ok) {
+               console.error('Error Status:', response.status);
+               console.error('Error Response:', data);
+               console.error('Request Headers:', response.headers);
+               throw new Error(data.message || `Server Error: ${response.status}`);
+           }
+            await Swal.fire({
+                title: 'Success!',
+                text: 'Your ride has been posted successfully',
+                icon: 'success',
+                confirmButtonText: 'View All Rides'
+            });
+
+            window.location.href = 'find-ride.html';
+
+        } catch (error) {
+            console.error('Error:', error);
+            Swal.fire({
+                title: 'Error!',
+                text: error.message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Offer Ride';
         }
     });
 
-    flatpickr("#arrivalDateTime", {
-        enableTime: true,
-        minDate: "today",
-        dateFormat: "Y-m-d H:i"
+    // Set minimum date for datetime inputs
+    const now = new Date();
+    const nowString = now.toISOString().slice(0, 16);
+    
+    const departureDateInput = document.getElementById('departureDateTime');
+    const arrivalDateInput = document.getElementById('arrivalDateTime');
+    
+    departureDateInput.min = nowString;
+    arrivalDateInput.min = nowString;
+
+    // Update arrival min time when departure time changes
+    departureDateInput.addEventListener('change', function() {
+        arrivalDateInput.min = this.value;
     });
 
-    // Vehicle type change handler
-    document.getElementById('vehicleType').addEventListener('change', function(e) {
+    // Update vehicle-specific options based on vehicle type
+    document.getElementById('vehicleType').addEventListener('change', function() {
+        const acOption = document.querySelector('.ac-option');
         const seatsSelect = document.getElementById('seatsAvailable');
+        
+        // Clear existing options
         seatsSelect.innerHTML = '';
         
-        let maxSeats;
-        switch(e.target.value) {
-            case 'bike':
-                maxSeats = 1;
-                break;
-            case 'car':
-                maxSeats = 4;
-                break;
-            case 'van':
-                maxSeats = 7;
-                break;
-            default:
-                maxSeats = 0;
-        }
-
-        for(let i = 1; i <= maxSeats; i++) {
-            const option = document.createElement('option');
-            option.value = i;
-            option.textContent = `${i} ${i === 1 ? 'seat' : 'seats'}`;
-            seatsSelect.appendChild(option);
+        if (this.value === 'car') {
+            acOption.style.display = 'inline-block';
+            // Add seat options for car (1-4)
+            for (let i = 1; i <= 4; i++) {
+                seatsSelect.add(new Option(i.toString(), i));
+            }
+        } else if (this.value === 'bike') {
+            acOption.style.display = 'none';
+            // Only 1 seat for bike
+            seatsSelect.add(new Option('1', 1));
+        } else if (this.value === 'van') {
+            acOption.style.display = 'inline-block';
+            // Add seat options for van (1-8)
+            for (let i = 1; i <= 8; i++) {
+                seatsSelect.add(new Option(i.toString(), i));
+            }
         }
     });
+});
 
-    // Vehicle number formatter
-    document.getElementById('vehicleNumber').addEventListener('input', function(e) {
-        let value = e.target.value.toUpperCase();
-        value = value.replace(/[^A-Z0-9-]/g, '');
-        
-        if(value.length > 2 && value.charAt(2) !== '-') {
-            value = value.slice(0, 2) + '-' + value.slice(2);
-        }
-        if(value.length > 5 && value.charAt(5) !== '-') {
-            value = value.slice(0, 5) + '-' + value.slice(5);
-        }
-        if(value.length > 8 && value.charAt(8) !== '-') {
-            value = value.slice(0, 8) + '-' + value.slice(8);
-        }
-        
-        e.target.value = value;
-    });
-
-    // Form submission handler
-    document.getElementById('offerRideForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Populate summary in modal
-        document.getElementById('summaryVehicleType').textContent = document.getElementById('vehicleType').value;
-        document.getElementById('summaryVehicleNumber').textContent = document.getElementById('vehicleNumber').value;
-        document.getElementById('summarySeats').textContent = document.getElementById('seatsAvailable').value;
-        document.getElementById('summaryFrom').textContent = document.getElementById('currentLocation').value;
-        document.getElementById('summaryTo').textContent = document.getElementById('destination').value;
-        document.getElementById('summaryDeparture').textContent = document.getElementById('departureDateTime').value;
-        document.getElementById('summaryArrival').textContent = document.getElementById('arrivalDateTime').value;
+// Check authentication status when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user'));
     
-        // Show confirmation modal
-        new bootstrap.Modal(document.getElementById('confirmationModal')).show();
-    });
-
-    // Handle final confirmation
-    document.getElementById('confirmRide').addEventListener('click', function() {
-        // Add your API call or data submission logic here
+    if (token && user) {
+        // User is logged in
+        document.querySelector('.guest-view').classList.add('d-none');
+        document.querySelector('.user-view').classList.remove('d-none');
+        document.querySelector('#themeToggle').classList.remove('d-none');
         
-        // Close modal
-        bootstrap.Modal.getInstance(document.getElementById('confirmationModal')).hide();
-        
-        // Show success message
-        alert('Ride offered successfully!');
-    });
-
-    // Initialize map
-    mapboxgl.accessToken = 'your_mapbox_token';
-    const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [-74.5, 40],
-        zoom: 9
-    });
-
-    // Add map controls
-    map.addControl(new mapboxgl.NavigationControl());
-    map.addControl(new mapboxgl.GeolocateControl({
-        positionOptions: {
-            enableHighAccuracy: true
-        },
-        trackUserLocation: true
-    }));
+        // Update user name and image if available
+        document.querySelector('.user-name').textContent = user.name;
+        if (user.profileImage) {
+            document.querySelector('#userDropdown img').src = user.profileImage;
+        }
+    } else {
+        // Not logged in, redirect to login page
+        window.location.href = 'login.html';
+    }
 });

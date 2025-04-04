@@ -58,6 +58,30 @@
                                 </div>
                             </div>
 
+                            <!-- Add after the password field -->
+                            <div class="mb-3">
+                                <label class="form-label">Role</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
+                                    <select name="role" class="form-select" required>
+                                        <option value="student">Student</option>
+                                        <option value="staff">Staff</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Gender</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-gender-ambiguous"></i></span>
+                                    <select name="gender" class="form-select" required>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="mb-4">
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="terms" required>
@@ -89,6 +113,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Replace or add these script tags in the correct order -->
+    <script src="js/services/authService.js"></script>
     <script src="js/auth.js"></script>
 </body>
 </html>

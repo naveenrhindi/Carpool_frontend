@@ -10,6 +10,7 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 <body data-bs-theme="light">
     <!-- Include the same navbar as other pages -->
@@ -36,20 +37,14 @@
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
     
+                <!-- Update the auth buttons section in navbar -->
                 <div class="d-flex align-items-center">
-                    <button class="btn btn-link" id="themeToggle">
-                        <i class="bi bi-moon-stars"></i>
-                    </button>
+                    
     
-                    <div class="guest-view">
-                        <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
-                    </div>
-    
-                    <div class="user-view d-none">
+                    <!-- Remove guest-view div and show user-view by default -->
+                    <div class="user-view">
                         <div class="dropdown">
                             <button class="btn btn-link dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown">
-                                <!-- Update user profile image in navbar -->
                                 <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="Profile" class="rounded-circle me-2" width="32" height="32">
                                 <span class="user-name">John Doe</span>
                             </button>
@@ -427,10 +422,10 @@
     </footer>
 
     <!-- Scripts -->
+    <!-- Update the scripts section at the bottom -->
+    <script src="js/services/authService.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_API_KEY&libraries=places"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
     <script src="js/find-ride.js"></script>
-</body>
-</html>
